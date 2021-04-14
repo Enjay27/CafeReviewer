@@ -1,0 +1,23 @@
+{
+  "name": "cafereviewer",
+  "version": "1.0.0",
+  "description": "Cafe Review\r toy project for cafe reviewer App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enjay27/CafeReviewer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enjay27/CafeReviewer/issues"
+  },
+  "homepage": "https://github.com/enjay27/CafeReviewer#readme",
+  "dependencies": {
+    "bootstrap": "^4.6.0",
+    "react-bootstrap": "^1.5.2"
+  }
+}
