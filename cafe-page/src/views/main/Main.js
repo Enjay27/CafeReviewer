@@ -10,7 +10,7 @@ function Main() {
     <div className="App">
         <Jumbotron className="background jumbotron-fluid">
           <Navbar>
-            <Navbar.Brand className="navi-color" href="/">yolf</Navbar.Brand>
+            <Navbar.Brand className="navi-color" href="/">yolp</Navbar.Brand>
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                     <Nav.Link className="navi-color" as={Link} to="/signup">Sign Up</Nav.Link>
