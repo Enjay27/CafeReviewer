@@ -1,0 +1,10 @@
+.background {
+  background-image:url('background.jpg');
+  background-position:center;
+  color:white;
+  height: 600px;
+}
+
+.navi-color {
+  color: #eee !important;
+}

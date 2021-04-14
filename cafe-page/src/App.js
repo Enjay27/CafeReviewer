@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React, {useContext, useState, lazy, useEffect, Suspense} from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Link, Route, Switch, useHistory } from 'react-router-dom'
 import './App.css';
+import './css/common.css';
+import Main from "./views/main/Main.js";
+import LoginView from "./views/login/LoginView.js";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          수정 <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Switch>
+            <Route exact={true} path={"/"} component={Main} />
+            <Route path="/login" component={LoginView} />
+
+
+
+        </Switch>
     </div>
   );
 }
