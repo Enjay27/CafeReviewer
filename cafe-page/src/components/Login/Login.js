@@ -24,8 +24,8 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         // 실패 테스트
-        //await axios.get('https://my-json-server.typicode.com/corazon4815/apitest/postㅇㄴㅇs/1')
-        await axios.get('https://my-json-server.typicode.com/corazon4815/apitest/posts/1')
+        await axios.get('https://my-json-server.typicode.com/corazon4815/apitest/postㅇㄴㅇs/1')
+        //await axios.get('https://my-json-server.typicode.com/corazon4815/apitest/posts/1')
         .then((result)=>{
             sessionStorage.setItem("loginId", JSON.stringify(result.data.title));
             history.push("/");
