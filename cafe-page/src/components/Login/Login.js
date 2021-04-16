@@ -1,50 +1,54 @@
-import React, {Component} from 'react';
-import { Link, Route, Switch} from 'react-router-dom'
+import React, {useEffect,Component, useState} from 'react';
+import { Link, Route, Switch, useHistory} from 'react-router-dom'
 import {Navbar, Nav, NavDropdown, Button, Jumbotron, Form, FormControl} from 'react-bootstrap';
 import "./Login.css";
 import * as config from '../../config/Config';
 import axios from "axios";
-
-// export default Modal = () => {
-//   return (
-//     <div>
-//       <p>The email address or password you entered is incorrect.</p>
-//     </div>
-//   )
-// }
-
-// const Auth = async (data) => {
-//     await axios.post('https://my-json-server.typicode.com/corazon4815/api_test/member',data)
-//       .then((result)=>{
-//           sessionStorage.setItem("loginId", JSON.stringify(result.id))
-//           history.push("/");
-//
-//
-//         //shoes변경([...shoes, ...result.data]);
-//         props.more변경(false);
-//       })
-//       .catch((result)=>{
-//         props.alert변경(false);
-//         //로딩중이라는 ui 안보이게
-//         props.more변경(false);
-//         console.log('실패 했어요')
-//         console.log(result)
-//       })
-// }
-
-
+import {useSelector, useDispatch} from "react-redux";
+import {open, close} from "../../redux/action/LoginModal.js";
 
 function Login() {
-    // const email = useInput("");
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    // useEffect(() => {
+    //    dispatch(open());
+    // }, []);
+
+    const [member_id, setMember_id] = useState("")
+    const [password, setPassword] = useState("")
+
+    const handleChangeEmail = ({ target: { value } }) => setMember_id(value)
+    const handleChangePw = ({ target: { value } }) => setPassword(value)
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        // 실패 테스트
+        //await axios.get('https://my-json-server.typicode.com/corazon4815/apitest/postㅇㄴㅇs/1')
+        await axios.get('https://my-json-server.typicode.com/corazon4815/apitest/posts/1')
+        .then((result)=>{
+            sessionStorage.setItem("loginId", JSON.stringify(result.data.title));
+            history.push("/");
+      })
+      .catch((result)=>{
+        dispatch(open());
+        console.log('실패 했어욧!');
+        console.log(result);
+
+      })
+}
 
     return (
         <div>
-            <Form>
+            <Form onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Control
                   type="email"
                   className="mx-sm-3 login_input"
                   placeholder="Email"
+                  value={member_id}
+                  name= "member_id"
+                  onChange={handleChangeEmail}
                   required
                 />
                 <Form.Text className="text-muted text_align_right">
@@ -56,7 +60,11 @@ function Login() {
                   type="password"
                   className="mx-sm-3 login_input"
                   placeholder="Password"
+                  value={password}
+                  name= "password"
+                  onChange={handleChangePw}
                   required
+
                 />
             </Form.Group>
                 <Button variant="danger" type="submit">Log In</Button>

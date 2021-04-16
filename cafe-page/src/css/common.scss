@@ -1,3 +1,24 @@
+@mixin modal() {
+    background:#eeeeee;
+    padding:20px;
+    border-radius:5px;
+    max-width:500px;
+    width:100%;
+    margin:30px auto 30px auto;
+}
+
+.my-alert p {
+    margin-bottom:0;
+}
+
+.yellow-modal {
+    @include modal();
+    background: #ffe590;
+}
+
+
+
+
 /*@charset "utf-8";*/
 
 /*!*@font-face {font-family:'NSQR'; src:url('fonts/NanumSquareR.eot'); src:url('fonts/NanumSquareR.eot?#iefix') format('embedded-opentype'), url('fonts/NanumSquareR.woff') format('woff'),*/
