@@ -5,7 +5,8 @@ import { Link, Route, Switch, useHistory } from 'react-router-dom'
 import '././Main.css';
 import LoginView from "../login/LoginView.js";
 
-function Main() {
+function MainView() {
+    let loginId = sessionStorage.getItem("loginId")
   return (
     <div className="App">
         <Jumbotron className="background jumbotron-fluid">
@@ -16,17 +17,15 @@ function Main() {
                     <Nav.Link className="navi-color" as={Link} to="/signup">Sign Up</Nav.Link>
                     <Nav.Link className="navi-color" as={Link} to="/login">Log In</Nav.Link>
                 </Nav>
+                {
+                    loginId && <span><b> hi! {loginId} </b></span>
+                }
             </Navbar.Collapse>
           </Navbar>
 
         </Jumbotron>
-
-      <Switch>
-        <Route exact path="/"></Route>
-        <Route path="/login" component={LoginView} />
-      </Switch>
     </div>
   );
 }
 
-export default Main;
+export default MainView;
