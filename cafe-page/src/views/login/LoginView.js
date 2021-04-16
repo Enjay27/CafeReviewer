@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import "./LoginView.css";
+import "views/login/LoginView.css";
 import {Navbar, Nav, NavDropdown, Button, Jumbotron, Form, FormControl} from 'react-bootstrap';
-import MainView from "../main/MainView.js";
 import {Link, Route} from "react-router-dom";
-import Login from "../../components/Login/Login.js"
-import Modal from "../../components/Login/Login.js"
+import Login from "components/Login/Login.js"
 import {useSelector, useDispatch} from "react-redux";
-import {open} from "../../redux/action/LoginModal.js";
-import LoginModal from "../../components/LoginModal/LoginModal";
-import '../../css/common.scss';
+import LoginModal from "components/LoginModal/LoginModal";
+import 'css/common.scss';
 
 
 function LoginView() {

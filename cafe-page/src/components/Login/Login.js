@@ -5,7 +5,7 @@ import "./Login.css";
 import * as config from '../../config/Config';
 import axios from "axios";
 import {useSelector, useDispatch} from "react-redux";
-import {open, close} from "../../redux/action/LoginModal.js";
+import {open, close} from "redux/action/LoginModal.js";
 
 function Login() {
     const history = useHistory();

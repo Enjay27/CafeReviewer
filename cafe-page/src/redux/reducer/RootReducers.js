@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {loginModal} from './LoginModalReducer.js';
+import {loginModal} from 'redux/reducer/LoginModalReducer.js';
 
 export default combineReducers({
     loginModal
