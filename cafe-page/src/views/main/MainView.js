@@ -2,8 +2,7 @@ import React, {useContext, useState, lazy, useEffect, Suspense} from 'react';
 import {Navbar, Nav, NavDropdown, Button, Jumbotron, Form, FormControl} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Link, Route, Switch, useHistory } from 'react-router-dom'
-import '././Main.css';
-import LoginView from "../login/LoginView.js";
+import 'views/main/Main.css';
 
 function MainView() {
     let loginId = sessionStorage.getItem("loginId")

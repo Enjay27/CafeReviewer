@@ -1,4 +1,4 @@
-import {OPEN, CLOSE} from "../action/LoginModal.js";
+import {OPEN, CLOSE} from "redux/action/LoginModal.js";
 
 const initialize = false;
 
