@@ -1,0 +1,13 @@
+/* .login_input {
+    width: 360px;
+}
+.text_align_right {
+    text-align: right;
+} */
+.wrap {
+  margin: 0 auto;
+  width: 20rem;
+}
+p {
+  font-size: small;
+}

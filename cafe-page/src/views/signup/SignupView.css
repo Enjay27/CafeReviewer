@@ -1,0 +1,7 @@
+.login_wrapper {
+    width : 400px;
+    margin : 0 auto;
+    padding : 20px 0;
+    margin-top : calc(50% - 250px);
+    border-radius : 5px;
+}
