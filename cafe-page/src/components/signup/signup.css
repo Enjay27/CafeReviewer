@@ -5,9 +5,54 @@
     text-align: right;
 } */
 .wrap {
+  padding: 4rem 8rem;
+  /* width: 20rem; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* padding: 2rem 4rem; */
+}
+.header {
+  color: #dc3545;
+  font-family: 'Helvetica', 'Arial';
+}
+.form-container {
+  min-width: 100%;
+  padding: 1rem;
+}
+.imgWrap {
+  float: left;
+  width: 50%;
   margin: 0 auto;
-  width: 20rem;
+  text-align: center;
+  padding: 10rem 0;
+}
+
+.form {
+  float: left;
+  width: 50%;
+  margin: 0 auto;
+  padding: 2rem;
 }
 p {
   font-size: small;
+}
+
+@media only screen and (max-width: 991px) {
+  .imgWrap {
+    /* visibility: hidden; */
+    display: none;
+  }
+  .wrap {
+    margin: 0 auto;
+  }
+  .form {
+    margin: 0 auto;
+    width: 70%;
+    padding: 2rem;
+  }
+  .form-container {
+    /* min-width: 100%; */
+    padding: 0;
+  }
 }
