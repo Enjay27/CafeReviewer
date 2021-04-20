@@ -1,15 +1,24 @@
-import React, {Component} from 'react';
-import "views/login/LoginView.css";
-import {Navbar, Nav, NavDropdown, Button, Jumbotron, Form, FormControl} from 'react-bootstrap';
-import {Link, Route} from "react-router-dom";
-import Login from "components/Login/Login.js"
+import React, {useEffect} from 'react';
+import {Navbar, Nav} from 'react-bootstrap';
+import {Link} from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
-import LoginModal from "components/LoginModal/LoginModal";
+import "views/login/LoginView.css";
 import 'css/common.scss';
-
+import Login from "components/Login/Login.js"
+import FindPw from "components/FindPw/FindPw.js"
+import LoginModal from "components/LoginModal/LoginModal.js";
+import {account} from "redux/action/LoginDiv.js";
+import Signup from "components/signup/Signup.js";
 
 function LoginView() {
+    const dispatch = useDispatch();
     const loginModal = useSelector((store) => store.loginModal);
+    const loginDiv = useSelector((store) => store.loginDiv);
+    console.log(loginDiv);
+
+    useEffect(() => {
+       dispatch(account());
+    }, []);
 
     return (
 
@@ -26,18 +35,20 @@ function LoginView() {
 
         {
           loginModal && <LoginModal/>
-
-
         }
 
-         <div className={"wrapper"}>
-             <div className={"container"} style={{padding : "0px"}}>
-                 <div className={"login_wrapper"}>
-                    <Login/>
+         <div className="wrapper">
+             <div className="container" style={{padding : "0px"}}>
+                 <div className="login_wrapper">
+                     {(() => {
+                          if (loginDiv === "login") return <Login/>;
+                          if (loginDiv === "signUp") return (<Signup/>);
+                          if (loginDiv === "findPw") return <FindPw/>;
+                     })()}
                 </div>
             </div>
         </div>
-            </div>
+       </div>
     );
 }
 export default LoginView;

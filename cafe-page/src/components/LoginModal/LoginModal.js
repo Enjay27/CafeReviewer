@@ -1,6 +1,6 @@
 import React from "react";
-import {useSelector, useDispatch} from "react-redux";
-import {open, close} from "../../redux/action/LoginModal.js";
+import {useDispatch} from "react-redux";
+import {close} from "redux/action/LoginModal.js";
 
 const LoginModal = () => {
   const dispatch = useDispatch();

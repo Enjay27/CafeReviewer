@@ -1,19 +1,16 @@
-import React, {useEffect,Component, useState} from 'react';
-import { Link, Route, Switch, useHistory} from 'react-router-dom'
-import {Navbar, Nav, NavDropdown, Button, Jumbotron, Form, FormControl} from 'react-bootstrap';
-import "./Login.css";
-import * as config from '../../config/Config';
+import React, {useState} from 'react';
+import { Link, useHistory} from 'react-router-dom'
+import {Button, Form} from 'react-bootstrap';
 import axios from "axios";
-import {useSelector, useDispatch} from "react-redux";
-import {open, close} from "redux/action/LoginModal.js";
+import "components/Login/Login.css";
+import {useDispatch} from "react-redux";
+import * as config from 'config/Config.js';
+import {open} from "redux/action/LoginModal.js";
+import {join, forgotPw} from "redux/action/LoginDiv.js";
 
 function Login() {
     const history = useHistory();
     const dispatch = useDispatch();
-
-    // useEffect(() => {
-    //    dispatch(open());
-    // }, []);
 
     const [member_id, setMember_id] = useState("")
     const [password, setPassword] = useState("")
@@ -34,17 +31,20 @@ function Login() {
         dispatch(open());
         console.log('실패 했어욧!');
         console.log(result);
-
       })
 }
-
     return (
-        <div>
-            <Form onSubmit={handleSubmit}>
+            <Form style={{maxWidth : "300px", margin : "0 auto"}} onSubmit={handleSubmit}>
+                <h3 className="text-danger">Log in to Yelp</h3>
+                <h6>New to Yolp?&nbsp;
+                     <Link onClick={()=>{
+                        dispatch(join());
+                    }}>Sign Up</Link></h6>
+                <p>By logging in, you agree to Yelp’s Terms of Service and Privacy Policy.</p>
             <Form.Group>
                 <Form.Control
                   type="email"
-                  className="mx-sm-3 login_input"
+                  className={"mt10 mb20"}
                   placeholder="Email"
                   value={member_id}
                   name= "member_id"
@@ -52,27 +52,31 @@ function Login() {
                   required
                 />
                 <Form.Text className="text-muted text_align_right">
-                    <a href="/forgotpw">Forgot password?</a>
+                    {/*<a href="/findpw">Forgot password?</a>*/}
+                    <Link onClick={()=>{
+                        dispatch(forgotPw());
+                    }}>Forgot password?</Link>
                 </Form.Text>
             </Form.Group>
             <Form.Group>
                 <Form.Control
                   type="password"
-                  className="mx-sm-3 login_input"
+                  className={"mt10 mb20"}
                   placeholder="Password"
                   value={password}
                   name= "password"
                   onChange={handleChangePw}
                   required
-
                 />
             </Form.Group>
-                <Button variant="danger" type="submit">Log In</Button>
+                <Button className={"ht35 wd100"} style={{width : "300px"}} variant="danger" type="submit"><b>Log In</b></Button>
                 <Form.Text className="text-muted text_align_right">
-                    New to Yolp? <a href="/signup">Sign Up</a>
+                    New to Yolp?&nbsp;
+                    <Link onClick={()=>{
+                        dispatch(join());
+                    }}>Sign Up</Link>
                 </Form.Text>
         </Form>
-    </div>
     );
 }
 export default Login;
