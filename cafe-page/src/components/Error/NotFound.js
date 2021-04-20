@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-function NotFound(props) {
+function NotFound() {
     return (
         <div className={"wrapper"}>
             <div className={"container"}>

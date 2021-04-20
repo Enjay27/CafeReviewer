@@ -1,17 +1,13 @@
-import React, { useContext, useState, lazy, useEffect, Suspense } from 'react';
+import React from 'react';
 import {
   Navbar,
   Nav,
-  NavDropdown,
-  Button,
-  Jumbotron,
-  Form,
-  FormControl,
+  Jumbotron
 } from 'react-bootstrap';
+import {Link, Route, Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Link, Route, Switch, useHistory } from 'react-router-dom';
 import 'views/main/Main.css';
-import SignupView from '../signup/SignupView';
+import SignupView from 'views/signup/SignupView.js';
 
 function MainView() {
   let loginId = sessionStorage.getItem('loginId');
@@ -31,11 +27,13 @@ function MainView() {
                 Log In
               </Nav.Link>
             </Nav>
+
             {loginId && (
               <span>
                 <b> hi! {loginId} </b>
               </span>
             )}
+
           </Navbar.Collapse>
         </Navbar>
         <Switch>
@@ -46,5 +44,4 @@ function MainView() {
     </div>
   );
 }
-
 export default MainView;
