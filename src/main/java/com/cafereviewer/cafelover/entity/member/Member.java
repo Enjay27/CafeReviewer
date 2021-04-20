@@ -1,8 +1,8 @@
 package com.cafereviewer.cafelover.entity.member;
 
 import com.cafereviewer.cafelover.entity.BaseEntity;
-import com.cafereviewer.cafelover.entity.content.Content;
-import com.cafereviewer.cafelover.entity.reply.Reply;
+import com.cafereviewer.cafelover.entity.collection.Collection;
+import com.cafereviewer.cafelover.entity.review.Review;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,10 +24,10 @@ public class Member extends BaseEntity {
     Long id;
 
     @OneToMany(mappedBy = "member")
-    List<Content> contents = new ArrayList<>();
+    List<Review> reviews = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
-    List<Reply> replies = new ArrayList<>();
+    List<Collection> collections = new ArrayList<>();
 
     @NotEmpty
     String login_id;
@@ -37,6 +37,8 @@ public class Member extends BaseEntity {
     String name;
     String address;
     String phoneNumber;
+    String email;
+    String birthday;
 
     @Enumerated(EnumType.STRING)
     MemberStatus status;
