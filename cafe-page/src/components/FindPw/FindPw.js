@@ -37,7 +37,7 @@ function FindPw() {
                 <Button block variant="danger" type="submit">
                     <b>Reset Password</b>
                 </Button>
-                <Form.Text className="text-muted text_align_right">
+                <Form.Text className="text-muted text-align-right">
                     <Link to="/signup" onClick={()=>{
                         dispatch(account());
                     }}>Back to Login</Link>
