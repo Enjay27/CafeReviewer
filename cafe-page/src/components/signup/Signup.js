@@ -47,6 +47,7 @@ const Signup = () => {
             <Form.Row>
               <Form.Group as={Col} controlId="formGridFirstName">
                 <Form.Control
+                  required
                   type="text"
                   placeholder="First Name"
                   {...register('FirstName', {
@@ -54,11 +55,12 @@ const Signup = () => {
                     pattern: /^[A-Za-z]+$/i,
                   })}
                 />
-                {errors.LastName && `Please fill out this field`}
+                {/* {errors.LastName && `Please fill out this field`} */}
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridLastName">
                 <Form.Control
+                  required
                   type="text"
                   placeholder="Last Name"
                   {...register('LastName', {
@@ -72,14 +74,15 @@ const Signup = () => {
 
             <Form.Group controlId="formGridEmail">
               <Form.Control
+                type="email"
+                required
                 placeholder="Email"
                 {...register('Email', {
                   required: true,
                   pattern: /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/,
                 })}
               />
-              {errors.Email &&
-                `Please include an '@' in the email address.  is missing an '@' `}
+              {/* {errors.Email && `Please include an '@' in the email address.  is missing an '@' `} */}
             </Form.Group>
 
             <Form.Group controlId="formGridPassword">
@@ -93,6 +96,18 @@ const Signup = () => {
                 })}
               />
             </Form.Group>
+
+            <div>
+              <div>
+                <h4></h4>
+                <div className="bar">
+                  <div className="bar_fill"></div>
+                </div>
+              </div>
+
+              <div>Password must be at least 6 characters in length</div>
+              <input type="hidden"></input>
+            </div>
 
             <Form.Group controlId="formGridZipCode">
               <Form.Control placeholder="ZIP Code" />

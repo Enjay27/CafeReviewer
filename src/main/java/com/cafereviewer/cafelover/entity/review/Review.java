@@ -1,8 +1,7 @@
-package com.cafereviewer.cafelover.entity.reply;
+package com.cafereviewer.cafelover.entity.review;
 
-import com.cafereviewer.cafelover.entity.content.Content;
+import com.cafereviewer.cafelover.entity.cafe.Cafe;
 import com.cafereviewer.cafelover.entity.member.Member;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Reply {
+public class Review {
 
     @GeneratedValue
     @Id
@@ -27,18 +26,15 @@ public class Reply {
     Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "content_id")
-    Content content;
+    @JoinColumn(name = "cafe_id")
+    Cafe cafe;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id")
-    Reply parent;
+    @OneToMany(mappedBy = "review")
+    List<ReviewPhoto> photos = new ArrayList<>();
 
-    @OneToMany(mappedBy = "parent")
-    List<Reply> child = new ArrayList<>();
-
-    String reply;
+    String comment;
+    Float rate;
 
     @Enumerated(EnumType.STRING)
-    ReplyStatus status;
+    ReviewStatus status;
 }
