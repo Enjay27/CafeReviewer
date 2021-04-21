@@ -11,5 +11,4 @@ const LoginModal = () => {
     </div>
   )
 }
-
 export default LoginModal;

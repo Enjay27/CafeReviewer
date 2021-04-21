@@ -1,7 +1,42 @@
-.login_wrapper {
-    width : 400px;
-    margin : 0 auto;
-    padding : 20px 0;
-    margin-top : calc(50% - 250px);
-    border-radius : 5px;
+/* 부트스트랩 기본 반응형 기능 .container 사용함 */
+.container {
+  margin-top: 10rem;
+}
+.signUp-form {
+    float: left;
+    width: 50%;
+    margin: 0;
+    padding: 0;
+}
+.signUp-form .form-container {
+    margin: auto;
+    padding: 0 18px;
+    max-width: 100%;
+    text-align: center;
+}
+.imgWrap {
+   float: left;
+    padding: 0 15px;
+    min-height: 1px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 50%;
+    *width: 459px;
+}
+@media only screen and (max-width: 991px) {
+  .imgWrap {
+    /* visibility: hidden; */
+    display: none;
+  }
+  .container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center
+  }
+  .signUp-form {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+  }
 }

@@ -15,32 +15,35 @@ function FindPw() {
     const handleSubmit = async (event) => {}
 
     return (
-            <Form style={{maxWidth : "300px", margin : "0 auto"}} onSubmit={handleSubmit}>
+        <div>
+            <div>
                 <h3 className="text-danger">Forgot Password</h3>
                 <p>Please enter your email address and we will send you
-                an email about how to reset your password.</p>
-            <Form.Group>
-                <Form.Control
-                  type="email"
-                  className={"mt10 mb20"}
-                  placeholder="Email"
-                  value={email}
-                  name= "email"
-                  onChange={handleChangeEmail}
-                  required
+                   an email about how to reset your password.</p>
+            </div>
 
-                />
-            </Form.Group>
-                <Button className={"ht35 wd100"} style={{width : "300px"}} variant="danger" type="submit">
+            <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Control
+                      type="email"
+                      className={"mt10 mb20"}
+                      placeholder="Email"
+                      value={email}
+                      name= "email"
+                      onChange={handleChangeEmail}
+                      required
+                    />
+                </Form.Group>
+                <Button block variant="danger" type="submit">
                     <b>Reset Password</b>
                 </Button>
-                <Form.Text className="text-muted text_align_right">
-                    {/*<a href="/login">Back to Login</a>*/}
-                    <Link onClick={()=>{
+                <Form.Text className="text-muted text-align-right">
+                    <Link to="/signup" onClick={()=>{
                         dispatch(account());
                     }}>Back to Login</Link>
                 </Form.Text>
-        </Form>
+            </Form>
+        </div>
     );
 }
 export default FindPw;

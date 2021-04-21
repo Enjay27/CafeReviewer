@@ -6,7 +6,7 @@ import "components/Login/Login.css";
 import {useDispatch} from "react-redux";
 import * as config from 'config/Config.js';
 import {open, close} from "redux/action/LoginModal.js";
-import {join, forgotPw, account} from "redux/action/LoginDiv.js";
+import {join, forgotPw} from "redux/action/LoginDiv.js";
 
 function Login() {
     const history = useHistory();
@@ -38,13 +38,17 @@ function Login() {
       })
 }
     return (
-            <Form style={{maxWidth : "300px", margin : "0 auto"}} onSubmit={handleSubmit}>
+        <div>
+            <div>
                 <h3 className="text-danger">Log in to Yelp</h3>
-                <h6>New to Yolp?&nbsp;
-                     <Link onClick={()=>{
-                        dispatch(join());
-                    }}>Sign Up</Link></h6>
-                <p>By logging in, you agree to Yelp’s Terms of Service and Privacy Policy.</p>
+                    <h6>New to Yolp?&nbsp;
+                         <Link to="/signup" onClick={()=>{
+                            dispatch(join());
+                        }}>Sign Up</Link></h6>
+                    <p>By logging in, you agree to Yelp’s Terms of Service and Privacy Policy.</p>
+            </div>
+
+        <Form className="formWidth" onSubmit={handleSubmit}>
             <Form.Group>
                 <Form.Control
                   type="email"
@@ -55,9 +59,8 @@ function Login() {
                   onChange={handleChangeEmail}
                   required
                 />
-                <Form.Text className="text-muted text_align_right">
-                    {/*<a href="/findpw">Forgot password?</a>*/}
-                    <Link onClick={()=>{
+                <Form.Text className="text-muted text-align-right">
+                    <Link to="/signup" onClick={()=>{
                         dispatch(forgotPw());
                     }}>Forgot password?</Link>
                 </Form.Text>
@@ -73,14 +76,15 @@ function Login() {
                   required
                 />
             </Form.Group>
-                <Button className={"ht35 wd100"} style={{width : "300px"}} variant="danger" type="submit"><b>Log In</b></Button>
-                <Form.Text className="text-muted text_align_right">
+                <Button block variant="danger" type="submit"><b>Log In</b></Button>
+                <Form.Text className="text-muted text-align-right">
                     New to Yolp?&nbsp;
-                    <Link onClick={()=>{
+                    <Link to="/signup" onClick={()=>{
                         dispatch(join());
                     }}>Sign Up</Link>
                 </Form.Text>
         </Form>
+            </div>
     );
 }
 export default Login;

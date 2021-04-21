@@ -4,7 +4,14 @@
   color:white;
   height: 600px;
 }
-
 .navi-color {
   color: #eee !important;
+}
+@media (min-width: 576px) {
+  .jumbotron {
+    padding: 0 !important;
+  }
+}
+.jumbotron {
+    padding: 0 !important;
 }
