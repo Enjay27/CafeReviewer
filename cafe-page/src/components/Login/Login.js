@@ -1,16 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import { Link, useHistory} from 'react-router-dom'
 import {Button, Form} from 'react-bootstrap';
 import axios from "axios";
 import "components/Login/Login.css";
 import {useDispatch} from "react-redux";
 import * as config from 'config/Config.js';
-import {open} from "redux/action/LoginModal.js";
-import {join, forgotPw} from "redux/action/LoginDiv.js";
+import {open, close} from "redux/action/LoginModal.js";
+import {join, forgotPw, account} from "redux/action/LoginDiv.js";
 
 function Login() {
     const history = useHistory();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        return () => {dispatch(close());}
+    },[]);
 
     const [member_id, setMember_id] = useState("")
     const [password, setPassword] = useState("")
