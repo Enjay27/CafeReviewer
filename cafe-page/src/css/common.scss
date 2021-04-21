@@ -6,17 +6,13 @@
     width:100%;
     margin:30px auto 30px auto;
 }
-
 .yellow-modal p {
     margin-bottom:0;
 }
-
 .yellow-modal {
     @include modal();
     background: #ffe590;
 }
-
-
 
 
 /*@charset "utf-8";*/
