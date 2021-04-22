@@ -1,18 +1,20 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 import {Button, Form} from 'react-bootstrap';
-import axios from "axios";
+import {useForm} from "react-hook-form";
 import "components/FindPw/FindPw.css";
 import {useDispatch} from "react-redux";
-import * as config from 'config/Config.js';
 import {account} from "redux/action/LoginDiv.js";
 
 function FindPw() {
     const dispatch = useDispatch();
-    const [email, setEmail] = useState("")
-    const handleChangeEmail = ({ target: { value } }) => setEmail(value)
+    const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    } = useForm();
 
-    const handleSubmit = async (event) => {}
+    const onSubmit = async (data) => console.log(data);
 
     return (
         <div>
@@ -28,9 +30,7 @@ function FindPw() {
                       type="email"
                       className={"mt10 mb20"}
                       placeholder="Email"
-                      value={email}
-                      name= "email"
-                      onChange={handleChangeEmail}
+                      {...register('member_id')}
                       required
                     />
                 </Form.Group>

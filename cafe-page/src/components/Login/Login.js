@@ -1,41 +1,45 @@
-import React, {useState,useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { Link, useHistory} from 'react-router-dom'
+import {useForm} from "react-hook-form";
 import {Button, Form} from 'react-bootstrap';
-import axios from "axios";
 import "components/Login/Login.css";
 import {useDispatch} from "react-redux";
-import * as config from 'config/Config.js';
 import {open, close} from "redux/action/LoginModal.js";
 import {join, forgotPw} from "redux/action/LoginDiv.js";
+import {UseAxios} from "components/Common/UseAxios.js";
+
+export const Logout = () => {
+    sessionStorage.removeItem("loginId");
+}
 
 function Login() {
     const history = useHistory();
     const dispatch = useDispatch();
+    const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    } = useForm();
 
     useEffect(() => {
         return () => {dispatch(close());}
     },[]);
 
-    const [member_id, setMember_id] = useState("")
-    const [password, setPassword] = useState("")
+    const onSubmit = async (data) => {
+        try {
+            const payload = await UseAxios("https://my-json-server.typicode.com/corazon4815/apitest/posts/1");
 
-    const handleChangeEmail = ({ target: { value } }) => setMember_id(value)
-    const handleChangePw = ({ target: { value } }) => setPassword(value)
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        // 실패 테스트
-        await axios.get('https://my-json-server.typicode.com/corazon4815/apitest/postㅇㄴㅇs/1')
-        //await axios.get('https://my-json-server.typicode.com/corazon4815/apitest/posts/1')
-        .then((result)=>{
-            sessionStorage.setItem("loginId", JSON.stringify(result.data.title));
-            history.push("/");
-      })
-      .catch((result)=>{
-        dispatch(open());
-        console.log('실패 했어욧!');
-        console.log(result);
-      })
+            //if(payload.data.titleeee){ //로그인 실패
+            if(payload){//로그인 성공
+                sessionStorage.setItem("loginId", JSON.stringify(payload.data.title));
+                history.push("/");
+            } else{
+                dispatch(open());
+                console.log('아이디, 비번이 틀렸어욧!!');
+            }
+        }catch (e){
+                console.log('서버통신에 실패했어욧!!');
+        }
 }
     return (
         <div>
@@ -48,15 +52,13 @@ function Login() {
                     <p>By logging in, you agree to Yelp’s Terms of Service and Privacy Policy.</p>
             </div>
 
-        <Form className="formWidth" onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <Form.Group>
                 <Form.Control
                   type="email"
                   className={"mt10 mb20"}
                   placeholder="Email"
-                  value={member_id}
-                  name= "member_id"
-                  onChange={handleChangeEmail}
+                  {...register('member_id')}
                   required
                 />
                 <Form.Text className="text-muted text-align-right">
@@ -70,9 +72,7 @@ function Login() {
                   type="password"
                   className={"mt10 mb20"}
                   placeholder="Password"
-                  value={password}
-                  name= "password"
-                  onChange={handleChangePw}
+                  {...register('password')}
                   required
                 />
             </Form.Group>
