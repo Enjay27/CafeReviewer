@@ -10,6 +10,7 @@ import 'views/main/Main.css';
 import {useDispatch} from "react-redux";
 import SignupView from 'views/signup/SignupView.js';
 import {join, account} from "redux/action/LoginDiv.js";
+import {Logout} from "components/Login/Login";
 
 function MainView() {
   let loginId = sessionStorage.getItem('loginId');
@@ -23,31 +24,39 @@ function MainView() {
             yolp
           </Navbar.Brand>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link className="navi-color" as={Link} to="/signup" onClick={()=>{
-                        dispatch(join());
-                    }}>
-                Sign Up
-              </Nav.Link>
-              <Nav.Link className="navi-color" as={Link} to="/signup" onClick={()=>{
-                        dispatch(account());
-                    }}>
-                Log In
-              </Nav.Link>
-            </Nav>
-
-            {loginId && (
-              <span>
-                <b> hi! {loginId} </b>
-              </span>
-            )}
-
+            {
+              loginId === null ? (
+               //로그아웃 상태
+               <Nav className="mr-auto navi-color">
+                  <Nav.Link className="navi-color" as={Link} to="/signup" onClick={()=>{
+                      dispatch(join());
+                  }}>
+                    Sign Up
+                  </Nav.Link>
+                  <Nav.Link className="navi-color" as={Link} to="/signup" onClick={()=>{
+                      dispatch(account());
+                  }}>
+                    Log In
+                  </Nav.Link>
+                </Nav>
+                )
+               :
+               //로그인 상태
+               (
+               <Nav className="mr-auto navi-color">
+                  <Nav.Link className="navi-color" href="/" onClick={Logout}>
+                    Log Out
+                  </Nav.Link>
+               </Nav>
+               )
+            }
           </Navbar.Collapse>
+
+          {
+            loginId && <h5> hi! {loginId} </h5>
+          }
+
         </Navbar>
-        <Switch>
-          <Route exact path="/"></Route>
-          <Route path="/signup" component={SignupView} />
-        </Switch>
       </Jumbotron>
     </div>
   );

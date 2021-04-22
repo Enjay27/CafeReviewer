@@ -7,7 +7,7 @@
 .navi-color {
   color: #eee !important;
 }
-@media (min-width: 576px) {
+@media only screen and (max-width: 991px) {
   .jumbotron {
     padding: 0 !important;
   }
